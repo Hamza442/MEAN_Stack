@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Form Validation</title>
+        
+    </head>
+    <body>
+        <form action="#" method="POST" onsubmit="return validation();">
+            <label>Name :</label><br>
+            <input type="text" name="name" id="name"><br>
+            <label>Email :</label><br>
+            <input type="email" name="email" id="email"><br>
+            <label>Password :</label><br>
+            <input type="password" name="password" id="password"><br>
+            <input type="submit" name="name" value="Submit">
+        </form>
+        <div id="name" style="color: red;"></div>
+        <script type="text/javascript">
+            function validation(){
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+                var errormessage ="";
+                if(name==''){
+                    errormessage+='enter your name \n';
+                    document.getElementById('name').style.borderColor='red';
+                    document.getElementById('name').innerHTML='name is required';
+                    
+                }
+                if(email==''){
+                    errormessage+='enter your email \n';
+                    document.getElementById('email').style.borderColor='red';
+                }
+                if(password==''){
+                    errormessage+='enter your password \n';
+                    document.getElementById('password').style.borderColor='red';
+                }
+                if(errormessage !=''){
+                    alert(errormessage);
+                    return false;
+                }
+                
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<script type="text/javascript">
+//the months and days start from 0 we should keep this in mind
+//this methods give us the only present date without month and time  
+var today = new Date();
+var x = today.getDate();
+document.write("getDate = "+x+"<br>");
+//this method is used to get the Day
+var x= today.getDay();
+document.write("getDay = "+x+"<br>");
+//this method is used to get the month
+var x = today.getMonth();
+document.write("getMonth = "+x+"<br>");
+//this method is use to getMiniutes
+var x=today.getMinutes();
+document.write("getMiniutes = "+x+"<br>");
+//this method is use to get hours this work upon 24hrs time setting
+var x=today.getHours();
+document.write("getHours = "+x+"<br>");
+//this method is use to get secinds
+var x=today.getSeconds();
+document.write("getSeconds = "+x+"<br>");
+//this method is use to get year
+var x = today.getFullYear();
+document.write("getFullYear = "+x+"<br>");
+//this method is use to get time this will give you time in milliseconds from 1 of january 1970
+var x = today.getTime();
+document.write("getTime = "+x+"<br>");
+var x = today.getTimezoneOffset();
+document.write("getTimezoneOffset = "+x+"<br>");
+</script>
+</body>
+</html>
