@@ -1,0 +1,49 @@
+<!-- 
+<form #courseForm='ngForm' (ngSubmit)='onSubmit(courseForm)' autocomplete="off" action="/course" >
+    <input type="hidden" name="_id" #_id='ngModel'
+        [(ngModel)]='schoolService && schoolService.selectedCourse && schoolService.selectedCourse._id'>
+    <label>Course Name:</label><br>
+    <input type="text" name="coursename" #coursename='ngModel'
+        [(ngModel)]='schoolService && schoolService.selectedCourse && schoolService.selectedCourse.coursename'><br>
+        <label>Student :</label><br>
+            <select name="student" #student='ngModel'
+            [(ngModel)]='schoolService && schoolService.selectedStudent && schoolService.selectedStudent.student'>
+            <option value="0">--Select course----</option>
+            <option *ngFor="let std of schoolService.students" value={{std?._id}}>{{std?.firstname}}</option>
+            </select>
+    <button type="submit">Submit</button>
+
+</form> -->
+
+    
+<form #courseForm='ngForm'  autocomplete="off" action="/course" >
+    <input type="hidden" name="_id" #_id='ngModel'
+        [(ngModel)]='schoolService && schoolService.selectedCourse && schoolService.selectedCourse._id'>
+    <label>Course Name:</label><br>
+    <input type="text" name="coursename" #coursename='ngModel'
+        [(ngModel)]='schoolService && schoolService.selectedCourse && schoolService.selectedCourse.coursename'><br>
+        <label>Student :</label><br>
+            <select name="student" #student='ngModel'
+            [(ngModel)]='schoolService && schoolService.selectedStudent && schoolService.selectedStudent.student'>
+            <option value="0">--Select course----</option>
+            <option *ngFor="let std of schoolService.students" value={{std?._id}}>{{std?.firstname}}</option>
+            </select>
+</form>
+<!------------------------------------------------------------------------>
+<form #studentForm='ngForm'>
+    <input type="hidden" name="_id" #_id='ngModel'
+    [(ngModel)]='schoolService&& schoolService.selectedStudent&&schoolService.selectedStudent._id'><br>
+    <label >First Name:</label>
+    <input type="text" name="firstname" #firstname='ngModel'
+    [(ngModel)]='schoolService&& schoolService.selectedStudent&&schoolService.selectedStudent.firstname'><br>
+    <label >Last Name:</label>
+    <input type="text" name="lastname" #lastname='ngModel'
+    [(ngModel)]='schoolService&& schoolService.selectedStudent&&schoolService.selectedStudent.lastname'><br>
+    <label >Father's Name:</label>
+    <input type="text" name="fathername" #fathername='ngModel'
+    [(ngModel)]='schoolService&& schoolService.selectedStudent&&schoolService.selectedStudent.fathername'><br>
+    
+    
+</form>
+ <button type="submit" (click)=onSubmit(courseForm.value,studentForm.value)>Submit</button>
+

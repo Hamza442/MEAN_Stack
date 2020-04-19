@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <a routerLink='/courses'>Go to Courses</a>
+        <form #studentForm='ngForm' (ngSubmit)='onSubmit(studentForm)' autocomplete="off" action="/student">
+            <input type="hidden" name="_id" #_id='ngModel'
+            [(ngModel)]='schoolService&& schoolService.selectedStudent&&schoolService.selectedStudent._id'><br>
+            <label >First Name:</label>
+            <input type="text" name="firstname" #firstname='ngModel'
+            [(ngModel)]='schoolService&& schoolService.selectedStudent&&schoolService.selectedStudent.firstname'><br>
+            <label >Last Name:</label>
+            <input type="text" name="lastname" #lastname='ngModel'
+            [(ngModel)]='schoolService&& schoolService.selectedStudent&&schoolService.selectedStudent.lastname'><br>
+            <label >Father's Name:</label>
+            <input type="text" name="fathername" #fathername='ngModel'
+            [(ngModel)]='schoolService&& schoolService.selectedStudent&&schoolService.selectedStudent.fathername'><br>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
