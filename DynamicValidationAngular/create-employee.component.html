@@ -1,0 +1,125 @@
+<form [formGroup]='employeeForm' (ngSubmit)='onSubmit()' class="form-horizontal">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Create Employee</h3>
+        </div>
+        <div class="panel-body">
+            <!--using the ngClass so that we can apply validation to this field dynamically using bootstrap has-erro class
+    we are using the touched property so that when we touch the field and then left it emplty then it should show error
+-->
+            <div class="form-group" [ngClass]="{'has-error':formErrors.fullName}">
+                <label class="col-sm-2 control-label" for="fullName">Full Name</label>
+                <div class="col-sm-8">
+                    <input type="text" id="fullName" formControlName='fullName' class="form-control"
+                        (blur)="logValidationErrors()">
+                    <label>{{fullNameLength}}</label>
+                    <span class="help-block" *ngIf="formErrors.fullName">
+                        {{formErrors?.fullName}}
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" >
+                    <label class="col-md-2 control-label">Contact Prference</label>
+                    <div class="col-md-8">
+                        <label class="radio-inline">
+<!--we are binding to the click event so that we are aware of change-->
+                            <input type="radio" value="email"   formControlName="contactPreference">Email
+                        </label>
+                        <label class="radio-inline">
+                                <input type="radio" value="phone" formControlName="contactPreference">Phone
+                        </label>
+                    </div>
+                </div>
+<!--here we are binding them in a single form group because the validator function of angular accepts only
+    1 parameter either a from control or fromgroup so we group them in form group and then send them 
+    to the validator-->
+            <div formGroupName='emailGroup'>
+            <div class="form-group" [ngClass]="{'has-error':formErrors.email}">
+                <label class="col-sm-2 control-label" for="email">Email</label>
+                <div class="col-sm-8">
+                    <input type="text" id="email" formControlName='email' class="form-control"
+                        (blur)="logValidationErrors()">
+                    <span class="help-block" *ngIf="formErrors.email">
+                        {{formErrors.email}}
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error':formErrors.confirmEmail || formErrors.emailGroup}">
+                <label class="col-sm-2 control-label" for="confirmEmail">Confirm Email</label>
+                <div class="col-sm-8">
+                    <input type="text" id="confirmEmail" formControlName='confirmEmail' class="form-control"
+                        (blur)="logValidationErrors()">
+                    <span class="help-block" *ngIf="formErrors.confirmEmail || formErrors.emailGroup">
+                    {{formErrors.confirmEmail}}  
+                    {{formErrors.emailGroup}}
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+            <div class="form-group" [ngClass]="{'has-error':formErrors.phone}">
+                    <label class="col-sm-2 control-label" for="phone">Phone</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="phone" formControlName='phone' class="form-control"
+                            (blur)="logValidationErrors()">
+                        <span class="help-block" *ngIf="formErrors.phone">
+                            {{formErrors.phone}}
+                        </span>
+                    </div>
+                </div>
+            <!--using this div element to bind with the the assocated form name-->
+            <div formGroupName='skills'>
+                <div class="form-group" [ngClass]="{'has-error':formErrors.skillName}">
+                    <label class="col-sm-2 control-label" for="skillName">Skill</label>
+                    <div class='col-sm-4'>
+                        <input type="text" class="form-control" id="skillName" placeholder="Name"
+                            (blur)="logValidationErrors()" formControlName='skillName'>
+                        <span class="help-block" *ngIf="formErrors.skillName">
+                            {{formErrors.skillName}}
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error':formErrors.experinceInYears}">
+                    <label class="col-sm-2 control-label" for="experinceInYears">Experince</label>
+                    <div class='col-sm-4'>
+                        <input type="text" class="form-control" placeholder="Experince in Years"
+                            (blur)="logValidationErrors()" formControlName='experinceInYears'>
+                        <span class="help-block" *ngIf="formErrors.skillName">
+                            {{formErrors.experinceInYears}}
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error': formErrors.proficiency}">
+                    <label class="col-md-2 control-label">Proficiency</label>
+                    <div class="col-md-8">
+                        <label class="radio-inline">
+                            <input type="radio" value="beginner" formControlName="proficiency"
+                                (blur)="logValidationErrors()">Beginner
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" value="intermediate" formControlName="proficiency"
+                                (blur)="logValidationErrors()">Intermediate
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" value="advanced" formControlName="proficiency"
+                                (blur)="logValidationErrors()">Advanced
+                        </label>
+                        <span class="help-block" *ngIf="formErrors.proficiency">
+                            {{formErrors.proficiency}}
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="btn-toolbar">
+                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-primary" type="button" (click)='onLoadDataClick()'>Load Data</button>
+            </div>
+        </div>
+    </div>
+
+</form>
